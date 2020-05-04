@@ -1,0 +1,32 @@
+.jumbotron {
+  width: 100%;
+  background-color: darkgray;
+  color: white;
+  font-size: 2em;
+  text-align: center;
+}
+
+.divLeftPanel {
+  float:left;
+  width: 30%;
+}
+
+.divRightPanel {
+  float:right;
+  width: 70%;
+}
+
+.mainBlock {
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.headerWeather {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.weatherIcon {
+  height: 50px;
+  width: 50px;
+}
