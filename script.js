@@ -73,8 +73,23 @@ $(document).ready(function () {
   var lat;
   var lon;
   var citiesHistory = [];
+  var tempinF = true;
+  var currentCity;
 
   // events
+  $("#CFCheckbox").click(function() {
+    tempinF = !tempinF;
+    console.log("tempInF?",tempinF)
+    if (tempinF) {
+      $("#spanCelsius").addClass("d-none");
+      $("#spanFahrenheit").removeClass("d-none");
+    }
+    else {
+      $("#spanFahrenheit").addClass("d-none");
+      $("#spanCelsius").removeClass("d-none");
+    }
+    renderCity(currentCity);
+  });
   $("#formCitySearch").submit(onFormCitySearchSubmit);
   $(document).on("click",".cityHistoryButton",onCityHistoryClick);
 
@@ -128,7 +143,13 @@ $(document).ready(function () {
     var farhenheit = 1.8 * celsius + 32
     celsius = round2(celsius);
     farhenheit = round2(farhenheit);
-    return farhenheit + "&deg;F (" + celsius + "&deg;C)"
+    if (tempinF) {
+      return farhenheit + "&deg;F"
+    }
+    else {
+      return celsius + "&deg;C"
+    }
+    
   }
 
   function generateForecastDay(date, weather, weatherIcon, temp, humidity) {
@@ -150,8 +171,11 @@ $(document).ready(function () {
     }).then(function (response) {
       // Get basic weather first
       var d = new Date().toLocaleDateString("en-US");
-      $("#headerCityName").text(response.name + " (" + d + ")");
-      addCityToHistory(response.name);
+      $("#divRightPanel").removeClass("d-none");
+      currentCity = response.name;
+      $("#headerCityName").text(currentCity + " (" + d + ")");
+      addCityToHistory(currentCity);
+      
       $("#cityWeatherIcon").attr("src", getWeatherIcon(response.weather[0].icon)).attr("title",response.weather[0].main);
       $("#spanTemp").html(getTempString(response.main.temp));
       $("#spanHumid").text(response.main.humidity);
