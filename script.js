@@ -212,19 +212,6 @@ $(document).ready(function () {
           let forecastDayDiv = generateForecastDay(date, weather, weatherIcon, temp, humidity);
           $("#forecast5Day").append(forecastDayDiv);
         }
-        /*response.daily.forEach(function(element,index) {
-          if 
-          if (index > 0) {
-            date = new Date(element.dt*1000).toLocaleDateString("en-US");
-            weather = element.weather[0].main;
-            weatherIcon = element.weather[0].icon;
-
-            temp = element.temp.day;
-            humidity = element.humidity;
-            var forecastDayDiv = generateForecastDay(date,weather,weatherIcon,temp,humidity);
-            $("#forecast5Day").append(forecastDayDiv);
-          }
-        });*/
       });
 
     });
@@ -232,5 +219,4 @@ $(document).ready(function () {
   if (citiesHistory.length > 0) {
     renderCity(citiesHistory[citiesHistory.length-1]);
   }
-  //renderCity("San Diego");
 });
