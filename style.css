@@ -6,16 +6,6 @@
   text-align: center;
 }
 
-.divLeftPanel {
-  float:left;
-  width: 30%;
-}
-
-.divRightPanel {
-  float:right;
-  width: 70%;
-}
-
 .mainBlock {
   border: 1px solid gray;
   border-radius: 5px;
